@@ -1,22 +1,24 @@
-#avchat_server
-#************************************************
-#** last   modify  on  2019-11-21   
-#** update by      郭建勇
-#************************************************
+                
+                 avchat_server
+
+#**************************************************
+#** last    modify   on  2019-11-22   
+#** update  by       郭建勇
+#** version          V0.1 
+#**************************************************
 #install  generator:
   sudo npm install -g express-generator
-
 #taobao org
   npm install -g  xxx  --registry=https://registry.npm.taobao.org
 #node自动重启工具nodemon
  npm i   nodemon cross-env --save-dev   --registry=https://registry.npm.taobao.org  
-#run process
-  npm install & npm start
-  & npm run dev (加载nodemon) 
+
 
 #***************************************************
 #******************AVCHAT SERVER********************
 #Directory specification
+*目录说明*
+
 avchat_server --
  		-bin                   运行程序
 		-conf		       全局配置文件
@@ -30,7 +32,28 @@ avchat_server --
 		-utils		       全局工具类
 		-views		       类似于ejs这样的模板文件（前后端分离）
 
-部署步骤：
-1： npm  i    nodemon cross-env --save-dev   --registry=https://registry.npm.taobao.org
-2:  npm  run  dev
+*部署步骤(后续打包成一件安装)：*
+
+1:  npm  install 
+2： npm  i       nodemon cross-env --save-dev   --registry=https://registry.npm.taobao.org
+3:  npm  i       mysql xss --save 
+4:  npm  i       express-session --save 
+5:  npm  i       redis connect-redis  --save 
+6:  npm  install pm2  -g 
+
+
+
+*运行指南*
+
+//简单调试（线下调试）
+node app.js
+
+//运行 自动重启nodemon（线下环境）
+npm  run  dev
+
+//nodemon 运行(线上环境)
+npm run prd
+
+//pm2 运行(线上环境)
+npm  run  prd-pm2 
 
