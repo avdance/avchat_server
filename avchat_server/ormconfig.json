@@ -3,8 +3,8 @@
     "host": "localhost",
     "port": 3306,
     "username": "root",
-    "password": "Mysql_2018",
-    "database": "myblog",
+    "password": "123",
+    "database": "test",
     "synchronize": true,
     "logging": false,
     "entities": [

@@ -5,10 +5,37 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "name": "Debug ts",
+            "type": "node",
+            "request": "launch",
+            "args": [
+              "${workspaceRoot}/src/TestORM.ts" // 入口文件
+            ],
+            "runtimeArgs": [
+              "--nolazy",
+              "-r",
+              "ts-node/register"
+            ],
+            "sourceMaps": true,
+            "cwd": "${workspaceRoot}",
+            "protocol": "inspector",
+            "console": "integratedTerminal",
+            "internalConsoleOptions": "neverOpen"
+          },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Debug",
+            "program": "${workspaceFolder}/dist/TestORM.js",
+            "args": [],
+            "cwd": "${workspaceFolder}",
+            "protocol": "inspector"
+        },
+        {
             "type": "node",
             "request": "launch",
             "name": "Launch Program",
-            "program": "${workspaceFolder}/dist/app.js",
+            "program": "${workspaceFolder}/dist/TestORM.js",
             "args": [],
             "cwd": "${workspaceFolder}",
             "protocol": "inspector"
