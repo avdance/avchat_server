@@ -5,7 +5,7 @@ export class UserFriends {
     @PrimaryGeneratedColumn({type: "int"})
     uid: number = 0;
 
-    @Column({name: 'nice_name', type: 'varchar', width: 20})
+    @Column({name: 'nice_name', type: 'varchar', length: 20})
     userName: string = "";
 
     @Column({type: 'int', width: 2})
@@ -14,7 +14,7 @@ export class UserFriends {
     @Column({type: 'int', width: 10})
     age: number = 0;
 
-    @Column({name: 'header_image',type: 'varchar', width: 10, nullable: true})
+    @Column({name: 'header_image',type: 'varchar', length: 10, nullable: true})
     headerImage: string | null = null;
 
 }

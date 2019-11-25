@@ -9,13 +9,13 @@ export class UserBaseInfo {
     @Column({type: "int", width: 10})
     uid: number = 0;
 
-    @Column({name: 'user_name', type: 'varchar', width: 20})
+    @Column({name: 'user_name', type: 'varchar', length: 20})
     userName: string = "";
 
-    @Column({type: 'varchar', width: 20})
+    @Column({type: 'varchar', length: 20})
     password: string = "";
 
-    @Column({name: 'nice_name', type: 'varchar', width: 20})
+    @Column({name: 'nice_name', type: 'varchar', length: 20})
     niceName: string = "";
 
     @Column({name: 'login_status', type: "int", width: 10})
@@ -24,12 +24,12 @@ export class UserBaseInfo {
     @Column({name: 'terminal_type', type: "int", width: 10})
     terminalType: number = 0;
 
-    @Column({name: 'table_name', type: 'varchar', width: 20})
+    @Column({name: 'table_name', type: 'varchar', length: 20})
     tableName: string = "";
 
-    @Column({type: 'varchar', width: 20})
+    @Column({type: 'varchar', length: 20, nullable: true})
     expand1: string | null = null;
 
-    @Column({type: 'varchar', width: 20})
+    @Column({type: 'varchar', length: 20, nullable: true})
     expand2: string | null = null;
 }
