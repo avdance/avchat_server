@@ -11,7 +11,7 @@ import {createConnection} from "typeorm";
 import session,{SessionOptions} from 'express-session'
 import connectRedis = require('connect-redis')
 import bodyparser = require('body-parser')
-import {setupWithExpress} from './middleware/SessionFileStore'
+import {setupWithExpress} from './middleware/SetupUtils'
 
 let router: express.Router;
 router = express.Router();
@@ -20,20 +20,6 @@ router = express.Router();
 
 createConnection().then(async connection => {
     let app: Express = express();
-    
-
-    // view engine setup
-    app.set('views', path.join(__dirname, '../views'));
-    app.set('view engine', 'jade');
-    
-    app.use(logger('dev'));
-    app.use(express.json());
-    app.use(express.urlencoded({ extended: false }));
-    app.use(cookieParser());
-    app.use(express.static(path.join(__dirname, '../public')));
-
-    app.use(bodyparser.json()); // 使用bodyparder中间件，
-    app.use(bodyparser.urlencoded({ extended: true }));
 
     //setup something with your express
     setupWithExpress(app);

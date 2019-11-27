@@ -32,5 +32,10 @@ export const Routes = [{
     route: '/login',
     controller: LoginController,
     action: 'loginPage'
+}, {
+    method: 'post',
+    route: '/login',
+    controller: LoginController,
+    action: 'login'
 }
 ];
