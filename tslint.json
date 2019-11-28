@@ -1,0 +1,28 @@
+{
+    "defaultSeverity": "error",
+    "extends": [
+        //"tslint:recommended"
+    ],
+    "jsRules": {
+        "no-empty": true
+    },
+    "rules": {
+        "whitespace": false,
+        "prefer-const": false,
+        "object-literal-shorthand": false,
+        "empty-interface": false,
+        "no-empty": true,
+        "no-console": true,
+        "no-invalid-this": true,
+        "no-return-await": true,
+        "no-alert": true,
+        "no-const-assign": true,
+        "no-debugger": true,
+        "no-duplicate-case": true,
+        "no-ex-assign": true,
+        "no-extra-semi": true,
+        "no-inline-comments": true,
+        "no-self-compare" : true 
+    },
+    "rulesDirectory": []
+}
