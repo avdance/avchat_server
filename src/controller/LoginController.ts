@@ -7,9 +7,9 @@ export class LoginController {
         response.render('login');
     }
     async login(req: Request, res: Response, next: NextFunction) {
-        if(req.body.username == 'danding' && req.session != null) {
+        if(req.body.username === 'danding' && req.session != null) {
             req.session.username = req.body.username;
-            res.render('home',{username : req.session.username});
+            res.render('home', {username : req.session.username});
         } else {
             res.render('login')
         }

@@ -1,28 +1,58 @@
+
 {
     "defaultSeverity": "error",
     "extends": [
-        //"tslint:recommended"
+        "tslint:recommended"
     ],
     "jsRules": {
-        "no-empty": true
+        "no-empty": true,
+        "object-literal-sort-keys": false
     },
     "rules": {
-        "whitespace": false,
+        "whitespace": [
+            true,
+            "check-separator",
+            "check-operator",
+            "check-decl",
+            "check-type"
+        ],
         "prefer-const": false,
+        "quotemark": false,
+        "semicolon": [
+            false,
+            "always"
+          ],
+        "no-trailing-whitespace": false,
+        "one-line": [
+            "check-whitespace"
+        ],
+        "no-var-keyword": false,
+        "ordered-imports": false,
+        "arrow-parens": false,
+        "only-arrow-functions": false,
+        "comment-format": [
+            false,
+            "check-space"
+          ],
         "object-literal-shorthand": false,
         "empty-interface": false,
+        "member-access": false,
+        "eofline": false,
+        "trailing-comma": false,
         "no-empty": true,
         "no-console": true,
         "no-invalid-this": true,
         "no-return-await": true,
-        "no-alert": true,
-        "no-const-assign": true,
+        "alert": false,
+        "const-assign": false,
         "no-debugger": true,
-        "no-duplicate-case": true,
-        "no-ex-assign": true,
-        "no-extra-semi": true,
-        "no-inline-comments": true,
-        "no-self-compare" : true 
+        "duplicate-case": false,
+        "ex-assign": false,
+        "extra-semi": false,
+        "inline-comments": false,
+        "self-compare" : false,
+        "object-literal-sort-keys": false
     },
     "rulesDirectory": []
 }
+

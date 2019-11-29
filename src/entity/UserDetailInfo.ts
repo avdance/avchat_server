@@ -57,6 +57,6 @@ export class UserDetailInfo {
     @Column({name: 'person_info', type: 'varchar', length: 50, nullable: true})
     personInfo: string | null = null;
 
-    @Column({name: 'header_image',type: 'varchar', length: 10, nullable: true})
+    @Column({name: 'header_image', type: 'varchar', length: 10, nullable: true})
     headerImage: string | null = null;
 }

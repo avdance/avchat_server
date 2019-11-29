@@ -14,7 +14,7 @@ export class UserFriends {
     @Column({type: 'int', width: 10})
     age: number = 0;
 
-    @Column({name: 'header_image',type: 'varchar', length: 10, nullable: true})
+    @Column({name: 'header_image', type: 'varchar', length: 10, nullable: true})
     headerImage: string | null = null;
 
 }
