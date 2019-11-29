@@ -35,9 +35,6 @@ createConnection().then(async connection => {
         });
     });
 
-    // start express server
-    app.listen(3000);
-
     // catch 404 and forward to error handler
     app.use(function(req: Request, res: Response, next: NextFunction) {
         next(createError(404));
