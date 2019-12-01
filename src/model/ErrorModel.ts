@@ -3,16 +3,16 @@ import BaseDataModel from './BaseDataModel';
 export default class ErrorModel extends BaseDataModel {
 
     /*code*/
-    code: number | undefined;
+    errCode: number | undefined;
     /*接口返回信息*/
     msg: string | undefined;
 
     /*构建*/
-    constructor( code: number, msg: string, data: object) {
+    constructor( errCode: number, msg: string, data: object) {
         // @ts-ignore
         super(data);
         this.msg = msg;
-        this.code = code;
+        this.errCode = errCode;
         if (!data) {
             return;
         }

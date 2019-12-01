@@ -56,6 +56,18 @@ Mysql> use    avchat;
 Mysql> set names utf8;
 Mysql> source avchat.sql;
 
+*tslint检查*
+[测试开发阶段使用]
+1:项目根目录下 新建 build.sh文件
+2:
+    #!/bin/bash
+    /usr/local/node12/bin/tsc -c --build tsconfig.json  
+	#本地使用时打开            
+    #tsc -c --build tsconfig.json						
+    /usr/local/node12/bin/tslint -c tslint.json 'src/**/*.ts'
+	#本地使用时打开   
+	#tslint -c tslint.json 'src/**/*.ts'
+
 
 //---------remove PM2------------
 0:  npm  install pm2  -g 

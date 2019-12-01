@@ -23,10 +23,10 @@ CREATE TABLE `avchat_user_base_info` (
   `password` varchar(20) NOT NULL  COMMENT '密码',
   `gender` int(2) unsigned DEFAULT 0 COMMENT '性别', 
   `nice_name` varchar(20) NOT NULL COMMENT '昵称',
-   `header_image` varchar(64) DEFAULT NULL COMMENT '头像',
+  `header_image` varchar(64) DEFAULT NULL COMMENT '头像',
   `login_status` int(10) unsigned NOT NULL COMMENT '登陆状态',
   `status` int(10) NOT NULL DEFAULT 0 COMMENT '用户状态',
-  `table_name` varchar(20) NOT NULL COMMENT '用户详细信息对应表',
+  `table_name` varchar(20)  NULL COMMENT '好友信息对应表',
   `createtime` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '创建时间',
   PRIMARY KEY (`uid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT COMMENT='用户信息表';
@@ -80,9 +80,10 @@ CREATE TABLE `avchat_user_friends` (
 -- ------------------------------- 
 DROP TABLE IF EXISTS `avchat_group_info`;
 CREATE TABLE `avchat_group_info` (
-  `cid` int(10) unsigned NOT NULL COMMENT 'ID' ,
+  `cid` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT 'ID' ,
   `name` varchar(20) NOT NULL COMMENT '群组名称',
   `type` int(10) unsigned NOT NULL COMMENT '群组类型',
+  `creator` int(10) unsigned NOT NULL COMMENT '创建者uid',
   `use_paswd` int(2) unsigned NOT NULL COMMENT '是否有密码',
   `passwd` int(10) unsigned  NULL  COMMENT  '群组密码',
   `createtime` int(11) unsigned NOT NULL DEFAULT '0' COMMENT '创建时间',

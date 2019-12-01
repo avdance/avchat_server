@@ -48,7 +48,8 @@ createConnection().then(async connection => {
         res.locals.error = req.app.get('env') === 'development' ? err : {};
         // render the error page
         res.status(res.statusCode || 500);
-        res.render('error');
+        //res.render('error');
+        res.json(err);
     });
 
 })

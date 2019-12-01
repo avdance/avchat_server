@@ -1,6 +1,6 @@
 import {Entity, PrimaryGeneratedColumn, Column} from "typeorm";
 
-@Entity({name: "user_base_info"})
+@Entity({name: "avchat_login_record"})
 export class LoginRecord { 
 
     @PrimaryGeneratedColumn({type: "int"})
@@ -18,8 +18,8 @@ export class LoginRecord {
     @Column({name: 'header_image', type: "varchar", width: 10})
     headerImage: number = 0;
 
-    @Column({name: 'logintime', type: 'int', length: 11})
-    loginTime: string = "";
+    @Column({name: 'logintime', type: 'date',  nullable: true})
+    loginTime: Date | null = new Date('1970-01-01');
 
     @Column({type: 'varchar', length: 20, nullable: true})
     expand1: string | null = null;

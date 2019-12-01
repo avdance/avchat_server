@@ -3,11 +3,11 @@ import {UserController} from '../controller/UserController';
 import {IndexController} from '../controller/IndexController';
 import LoginController from '../controller/LoginController';
 import login from './Login'
-
+import regist from './Register'
 //add new routes framework  add by guojianyong
 const routes = Router();
-routes.use('/login', login)
-
+routes.use('/api/login', login)
+routes.use('/api/regist', regist)
 //Keep history test interface 
 const Routes = [{
     method: "get",
