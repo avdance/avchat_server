@@ -1,8 +1,15 @@
+import { Router} from "express";
 import {UserController} from '../controller/UserController';
 import {IndexController} from '../controller/IndexController';
-import {LoginController} from '../controller/LoginController';
+import LoginController from '../controller/LoginController';
+import login from './Login'
 
-export const Routes = [{
+//add new routes framework  add by guojianyong
+const routes = Router();
+routes.use('/login', login)
+
+//Keep history test interface 
+const Routes = [{
     method: "get",
     route: "/users",
     controller: UserController,
@@ -29,13 +36,18 @@ export const Routes = [{
     action: 'index'
 }, {
     method: 'get',
-    route: '/login',
+    route: '/login_',
     controller: LoginController,
     action: 'loginPage'
 }, {
     method: 'post',
-    route: '/login',
+    route: '/login_',
     controller: LoginController,
     action: 'login'
 }
 ];
+
+export {
+    Routes,
+    routes
+}

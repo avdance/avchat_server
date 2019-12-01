@@ -31,15 +31,34 @@ avchat_server --
 		-routes		       对各个路由做处理的代码逻辑
 		-utils		       全局工具类
 		-views		       类似于ejs这样的模板文件（前后端分离）
+		
+   [add TypeScript]
+        
+		.vscode            vscode运行ts的配置
+		src                ts主要文件
 
-*部署步骤(后续打包成一件安装)：*
+
+
+*部署步骤(测试)*
 
 1:  npm  install 
-2： npm  i       nodemon cross-env --save-dev   --registry=https://registry.npm.taobao.org
-3:  npm  i       mysql xss --save 
-4:  npm  i       express-session --save 
-5:  npm  i       redis connect-redis  --save 
-6:  npm  install pm2  -g 
+2： npm  i         	 nodemon cross-env --save-dev   	 --registry=https://registry.npm.taobao.org
+3:  npm  i       	 mysql xss --save 
+4:  npm  i      	 express-session --save 
+5:  npm  i      	 redis connect-redis  --save 
+6:	npm  install 	 typescript --save-dev
+7；	npm  install 	 ts-node --save-dev
+
+*mysql导入*
+[login to mysql server]
+Mysql> create database avchat;
+Mysql> use    avchat;
+Mysql> set names utf8;
+Mysql> source avchat.sql;
+
+
+//---------remove PM2------------
+0:  npm  install pm2  -g 
 
 
 

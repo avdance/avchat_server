@@ -30,5 +30,6 @@ exports.setupWithExpress = function setupWithExpress(app) {
     app.use(sessionMiddleware)
     app.engine('html', ejs); // 使用ejs引擎解析html文件中ejs语法
     var https_server = https.createServer(options, app);
-    https_server.listen(3000, '0.0.0.0');
+    //https_server.listen(3000, '0.0.0.0');
+    app.listen(3000);
  }

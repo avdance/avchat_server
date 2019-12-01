@@ -1,6 +1,6 @@
 import {Entity, PrimaryGeneratedColumn, Column} from "typeorm";
 
-@Entity({name: "user_friends"})
+@Entity({name: "avchat_user_friends"})
 export class UserFriends {
     @PrimaryGeneratedColumn({type: "int"})
     uid: number = 0;

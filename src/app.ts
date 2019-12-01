@@ -5,7 +5,7 @@ import cookieParser from 'cookie-parser';
 import logger from 'morgan';
 import { Express } from 'express-serve-static-core';
 import ErrorHandler from 'errorhandler'
-import {Routes} from "./routes";
+import {routes , Routes} from "./routes";
 import "reflect-metadata";
 import {createConnection} from "typeorm";
 import session, {SessionOptions} from 'express-session'
@@ -21,7 +21,8 @@ createConnection().then(async connection => {
 
     //setup something with your express
     setupWithExpress(app);
-
+    // 引入路由
+    app.use(routes);
     // register express routes from defined application routes
     Routes.forEach(route => {
         (app as any)[route.method](route.route, (req: Request, res: Response, next: () => void) => {
