@@ -4,9 +4,6 @@ import {Entity, PrimaryGeneratedColumn, Column} from "typeorm";
 export class UserBaseInfo {
 
     @PrimaryGeneratedColumn({type: "int"})
-    id: number = 0;
-
-    @Column({type: "int", width: 10})
     uid: number = 0;
 
     @Column({name: 'user_name', type: 'varchar', length: 20})
@@ -27,9 +24,15 @@ export class UserBaseInfo {
     @Column({name: 'table_name', type: 'varchar', length: 20})
     tableName: string = "";
 
-    @Column({type: 'varchar', length: 20, nullable: true})
-    expand1: string | null = null;
+    @Column({type: 'int', width: 2})
+    gender: number = 0;
 
-    @Column({type: 'varchar', length: 20, nullable: true})
-    expand2: string | null = null;
+    @Column({name: 'header_image', type: 'varchar', length: 10, nullable: true})
+    headerImage: string | null = null;
+
+    @Column({name: 'status', type: "int", width: 10})
+    status: number = 0;
+
+    @Column({type: 'date', nullable: true})
+    createtime: Date | null = new Date('1970-01-01');
 }

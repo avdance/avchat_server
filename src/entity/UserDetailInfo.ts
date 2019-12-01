@@ -33,6 +33,7 @@ export class UserDetailInfo {
     @Column({name: 'terminal_type', type: "int", width: 10})
     terminalType: number = 0;
 
+    //个性签名
     @Column({name: 'self_sign', type: 'varchar', length: 50, nullable: true})
     selfSign: string | null = null;
     
@@ -59,4 +60,14 @@ export class UserDetailInfo {
 
     @Column({name: 'header_image', type: 'varchar', length: 10, nullable: true})
     headerImage: string | null = null;
+
+    @Column({name: 'qrcode_image', type: 'varchar', length: 64, nullable: true})
+    qrCodeImage: string | null = null;
+
+    @Column({type: 'varchar', length: 20, nullable: true})
+    expand1: string | null = null;
+
+    @Column({type: 'varchar', length: 20, nullable: true})
+    expand2: string | null = null;
+
 }

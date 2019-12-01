@@ -4,4 +4,4 @@ dist/
 package-lock.json
 sessions/
 .vscode/
-
+.DS_Store
