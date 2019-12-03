@@ -2,9 +2,10 @@
                  avchat_server
 
 #**************************************************
-#** last    modify   on  2019-11-22   
-#** update  by       郭建勇
-#** version          V0.1 
+#** last     modify   on  2019-12-03   
+#** update   by       郭建勇
+#** version           V0.1 
+#** typeorm  https://typeorm.io/#/select-query-builder
 #**************************************************
 #install  generator:
   sudo npm install -g express-generator
@@ -14,8 +15,8 @@
  npm i   nodemon cross-env --save-dev   --registry=https://registry.npm.taobao.org  
 
 
-#***************************************************
-#******************AVCHAT SERVER********************
+#***************************************************#
+#******************AVCHAT SERVER********************#
 #Directory specification
 *目录说明*
 
@@ -47,7 +48,11 @@ avchat_server --
 4:  npm  i      	 express-session --save 
 5:  npm  i      	 redis connect-redis  --save 
 6:	npm  install 	 typescript --save-dev
-7；	npm  install 	 ts-node --save-dev
+7:	npm  install 	 ts-node --save-dev
+8:	npm  install     -g typescript
+9:  npm  install     jsonwebtoken
+10: npm  install     @types/jsonwebtoken --save
+
 
 *mysql导入*
 [login to mysql server]

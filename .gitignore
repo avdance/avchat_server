@@ -1,5 +1,4 @@
 #node module ignor
-build.sh
 node_modules/
 dist/
 package-lock.json

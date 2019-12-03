@@ -1,3 +1,9 @@
+/*****
+ *    avchat routes
+ *    optimize routes - TypeScript上 koa  route: 
+ *    https://www.jianshu.com/p/e280d916495b
+ * 
+ */
 import { Router} from "express";
 import {UserController} from '../controller/UserController';
 import {IndexController} from '../controller/IndexController';

@@ -1,18 +1,12 @@
 import express, {NextFunction, Request, Response} from 'express'
 import createError from 'http-errors';
-import path from 'path';
-import cookieParser from 'cookie-parser';
-import logger from 'morgan';
 import { Express } from 'express-serve-static-core';
-import ErrorHandler from 'errorhandler'
 import {routes , Routes} from "./routes";
 import "reflect-metadata";
 import {createConnection} from "typeorm";
-import session, {SessionOptions} from 'express-session'
-import connectRedis = require('connect-redis')
-import bodyparser = require('body-parser')
 import {setupWithExpress} from './middleware/SetupUtils'
-
+import JwTokenUtils from './utils/JwtTokenUtil';
+import { VerifyCallback } from 'jsonwebtoken';
 let router: express.Router;
 router = express.Router();
 
@@ -21,6 +15,14 @@ createConnection().then(async connection => {
 
     //setup something with your express
     setupWithExpress(app);
+    app.use("/api", (req: Request, res: Response, next: NextFunction) => {
+        
+         //verity  token 
+         if(JwTokenUtils.verifyToken(req, res)){
+            next();
+         } 
+        
+    });
     // 引入路由
     app.use(routes);
     // register express routes from defined application routes
