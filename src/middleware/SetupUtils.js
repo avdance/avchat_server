@@ -13,8 +13,8 @@ const sessionMiddleware = session({
     cookie: { maxAge: 60000 }//两次请求的时间差 即超过这个时间再去访问 session就会失效
  })
  var options = {
-    key  : fs.readFileSync('./src/middleware/cert/test.key'),
-    cert : fs.readFileSync('./src/middleware/cert/test.crt') 
+    key  : fs.readFileSync('./config/cert/avchat_server.key'),
+    cert : fs.readFileSync('./config/cert/avchat_server.crt')
 }
 exports.setupWithExpress = function setupWithExpress(app) {
 

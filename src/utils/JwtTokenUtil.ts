@@ -19,9 +19,9 @@ import ErrorModel from '../model/ErrorModel'
  // 密钥
 const secret = 'AVCHAT'
 // 获取签发 JWT 时需要用的密钥
-const privateKey = fs.readFileSync('./src/config/private.key')
+const privateKey = fs.readFileSync('./config/token/private.key')
 // 获取验证 JWT 时需要用的公钥
-const publicKey = fs.readFileSync('./src/config/public.key')
+const publicKey = fs.readFileSync('./config/token/public.key')
  // private property
 const keyStr = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=';
 
