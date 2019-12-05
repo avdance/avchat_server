@@ -1,48 +1,21 @@
 import express, {NextFunction, Request, Response} from 'express'
 import createError from 'http-errors';
 import { Express } from 'express-serve-static-core';
-import {routes , Routes} from "./routes";
+import routes from "./routes";
 import "reflect-metadata";
 import {createConnection} from "typeorm";
 import {setupWithExpress} from './middleware/SetupUtils'
-import JwTokenUtils from './utils/JwtTokenUtil';
-import { VerifyCallback } from 'jsonwebtoken';
-let router: express.Router;
-router = express.Router();
 
 createConnection().then(async connection => {
     let app: Express = express();
-
     //setup something with your express
     setupWithExpress(app);
-    app.use("/api", (req: Request, res: Response, next: NextFunction) => {
-        
-         //verity  token 
-         if(JwTokenUtils.verifyToken(req, res)){
-            next();
-         } 
-        
-    });
     // 引入路由
     app.use(routes);
-    // register express routes from defined application routes
-    Routes.forEach(route => {
-        (app as any)[route.method](route.route, (req: Request, res: Response, next: () => void) => {
-            const result = (new (route.controller as any)())[route.action](req, res, next);
-            if (result instanceof Promise) {
-                result.then(myres => myres !== null && myres !== undefined ? res.send(myres) : undefined);
-
-            } else if (result !== null && result !== undefined) {
-                res.json(result);
-            }
-        });
-    });
-
     // catch 404 and forward to error handler
     app.use(function(req: Request, res: Response, next: NextFunction) {
         next(createError(404));
     });
-
     // error handler
     app.use(function(err: Error, req: Request, res: Response, next: NextFunction) {
         // set locals, only providing error in development

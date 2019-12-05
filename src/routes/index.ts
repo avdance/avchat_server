@@ -2,58 +2,18 @@
  *    avchat routes
  *    optimize routes - TypeScript上 koa  route: 
  *    https://www.jianshu.com/p/e280d916495b
- * 
+ *    https://www.jianshu.com/p/7893169a7c93
  */
 import { Router} from "express";
-import {UserController} from '../controller/UserController';
-import {IndexController} from '../controller/IndexController';
-import LoginController from '../controller/LoginController';
 import login from './Login'
 import regist from './Register'
+import user from './User'
+import friends from './UserFriends'
 //add new routes framework  add by guojianyong
 const routes = Router();
+routes.use('/api/user', user)
 routes.use('/api/login', login)
 routes.use('/api/regist', regist)
-//Keep history test interface 
-const Routes = [{
-    method: "get",
-    route: "/users",
-    controller: UserController,
-    action: "all"
-}, {
-    method: "get",
-    route: "/users/:id",
-    controller: UserController,
-    action: "one"
-}, {
-    method: "post",
-    route: "/users",
-    controller: UserController,
-    action: "save"
-}, {
-    method: "delete",
-    route: "/users/:id",
-    controller: UserController,
-    action: "remove"
-}, {
-    method: 'get',
-    route: '/',
-    controller: IndexController,
-    action: 'index'
-}, {
-    method: 'get',
-    route: '/login_',
-    controller: LoginController,
-    action: 'loginPage'
-}, {
-    method: 'post',
-    route: '/login_',
-    controller: LoginController,
-    action: 'login'
-}
-];
+routes.use('/api/friends', friends)
 
-export {
-    Routes,
-    routes
-}
+export  default   routes

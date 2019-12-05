@@ -23,18 +23,17 @@ class LoginController {
         if (req.body.password !== useLogin.password) {
 
             res.json(new ErrorModel(211, "密码错误", []))
-
+            return;
         } else {
 
             // Token payload Generator
             const payload = {
                 iss: req.body.user_name,
                 passwd: req.body.password,
-                time: new Date().getTime()
             }
             // Generator Token
             const token = JwTokenUtils.sigin(payload);
-            res.json(new SuccessModel(0, "登陆成功", new Object({ data: {token: token, user : useLogin} })));
+            res.json(new SuccessModel(0, "登陆成功", new Object({ token: token, data : useLogin} )));
         }
     }
     static allList = async (req: Request, res: Response) => {

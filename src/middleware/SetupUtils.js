@@ -14,7 +14,7 @@ const sessionMiddleware = session({
  })
  var options = {
     key  : fs.readFileSync('./config/cert/avchat_server.key'),
-    cert : fs.readFileSync('./config/cert/avchat_server.crt')
+    cert : fs.readFileSync('./config/cert/avchat_server.crt') 
 }
 exports.setupWithExpress = function setupWithExpress(app) {
 
@@ -24,7 +24,7 @@ exports.setupWithExpress = function setupWithExpress(app) {
     app.use(cookieParser());
     app.use(bodyparser.json()); // 使用bodyparder中间件，
     app.use(bodyparser.urlencoded({ extended: true }));
-    app.use(sessionMiddleware)
+    //app.use(sessionMiddleware)
     var https_server = https.createServer(options, app);
     //https_server.listen(3000, '0.0.0.0');
     app.listen(3000);
