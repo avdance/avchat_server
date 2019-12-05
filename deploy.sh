@@ -3,6 +3,21 @@
 DEPLOY_PATH=/var/avchat_server
 CUR_PATH=`pwd`
 
+function genORMConfig()
+{
+	touch ormconfig.json
+	echo '{' >> ormconfig.json
+    	echo '	"type": "mysql",' >> ormconfig.json
+    	echo '	"host": "phab.avdance.top",' >> ormconfig.json
+    	echo '	"port": 3306,' >> ormconfig.json
+    	echo '	"username": "mysqluser",' >> ormconfig.json
+    	echo '	"password": "1@3$5^7*",' >> ormconfig.json
+    	echo '	"database": "avchat",' >> ormconfig.json
+    	echo '	"synchronize": true,' >> ormconfig.json
+    	echo '	"logging": false' >> ormconfig.json
+    	echo '}' >> ormconfig.json
+}
+
 ###########################
 #     stop service        #
 ###########################
@@ -45,10 +60,6 @@ cp -r ./out/* $DEPLOY_PATH/
 echo "copy config into $DEPLOY_PATH ..."
 cp -r ./config $DEPLOY_PATH/
 
-#copy ormconfig
-echo "copy ormconfig.json into $DEPLOY_PATH ..."
-cp ./ormconfig.json $DEPLOY_PATH/
-
 #copy package.json 
 echo "copy package.json into $DEPLOY_PATH ..."
 cp ./package.json $DEPLOY_PATH/
@@ -60,6 +71,10 @@ cp ./package.json $DEPLOY_PATH/
 cd $DEPLOY_PATH
 echo "install dependencies ..."
 /usr/local/node12/bin/npm install
+
+#generate ormconfig.json
+echo "generate ormconfig.json"
+genORMConfig
 
 echo "start service ..."
 /usr/local/node12/bin/forever start app.js
