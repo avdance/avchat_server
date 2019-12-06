@@ -27,7 +27,7 @@ if [ -d /var/avchat_server/ ]; then
 	echo "entry deploy dir [`pwd`]..."
 
 	if [ "X`pwd`" = "X/var/avchat_server" ]; then
-		rm -rf *
+		rm -rf /var/avchat_server/*
 	fi
 
 	NUM=`ps -ef |grep forever | wc -l`
