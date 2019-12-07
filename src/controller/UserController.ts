@@ -1,9 +1,9 @@
-import { getRepository, getConnection } from "typeorm";
 import { Request, Response } from "express";
 import SuccessModel from '../model/SuccessModel'
 import ErrorModel from '../model/ErrorModel'
 import { UserDetailInfo } from "../entity/UserDetailInfo";
 import { BaseController } from './BaseController';
+import { ConnectionManager } from '../utils/ConnectionManager';
 
 class UserController {
 
@@ -25,7 +25,7 @@ class UserController {
                 res.json(new ErrorModel(202, "参数错误", []))
                 return;
             }
-            getRepository(UserDetailInfo)
+            ConnectionManager.getInstance().getRepository(UserDetailInfo)
                 .createQueryBuilder("UserDetailInfo")
                 .where("UserDetailInfo.uid = :uid", { uid: req.body.uid })
                 .getOne().then((userDetail) => {
@@ -58,7 +58,7 @@ class UserController {
             userInfo.area = req.body.area;
             userInfo.email = req.body.email;
             userInfo.mobile = req.body.mobile;
-            const userRegist = getRepository(UserDetailInfo)
+            const userRegist = ConnectionManager.getInstance().getRepository(UserDetailInfo)
                 .createQueryBuilder("UserDetailInfo")
                 .where("UserDetailInfo.uid = :uid", { uid: req.params.id })
                 .update(userInfo);

@@ -7,8 +7,9 @@ import {createConnection} from "typeorm";
 import {setupWithExpress} from './middleware/SetupUtils'
 import SocketIO from 'socket.io';
 import {SocketHandler} from './socket/handler';
+import {ConnectionManager} from './utils/ConnectionManager';
 
-createConnection().then(async connection => {
+ConnectionManager.initConnection( connection => {
     let app: Express = express();
     //setup something with your express
     //return socket.io instance which bind https server
@@ -33,5 +34,5 @@ createConnection().then(async connection => {
     io.on('connection', function(socket){
         SocketHandler.handle(socket)
     });
-    
+
 })

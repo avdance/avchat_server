@@ -1,15 +1,15 @@
-import { getRepository } from "typeorm";
 import { NextFunction, Request, Response } from "express";
 import ErrorModel from '../model/ErrorModel'
 import SuccessModel from '../model/SuccessModel'
 import { UserBaseInfo } from '../entity/UserBaseInfo';
 import JwTokenUtils from '../utils/JwtTokenUtil';
+import {ConnectionManager} from '../utils/ConnectionManager';
 
 class LoginController {
 
     static login = async (req: Request, res: Response) => {
 
-        const useLogin = await getRepository(UserBaseInfo)
+        const useLogin = await ConnectionManager.getInstance().getRepository(UserBaseInfo)
             .createQueryBuilder("UserBaseInfo")
             .where("UserBaseInfo.user_name = :user_name", { user_name: req.body.user_name })
             .getOne();

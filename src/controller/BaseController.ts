@@ -1,15 +1,15 @@
-import { getRepository } from "typeorm";
 import { Request, Response } from "express";
 import ErrorModel from '../model/ErrorModel'
 import { UserBaseInfo } from '../entity/UserBaseInfo';
 import JwTokenUtils from '../utils/JwtTokenUtil';
+import {ConnectionManager} from '../utils/ConnectionManager';
 
 export class BaseController {
 
     public static async verify(req: Request, res: Response) {
 
         let result = JwTokenUtils.verifyToken(req, res);
-        const useSelect = await getRepository(UserBaseInfo)
+        const useSelect = await ConnectionManager.getInstance().getRepository(UserBaseInfo)
             .createQueryBuilder("UserBaseInfo")
             .where("UserBaseInfo.user_name = :user_name", { user_name: result.iss })
             .getOne();

@@ -1,9 +1,10 @@
-import { getRepository, getConnection } from "typeorm";
+import { getConnection } from "typeorm";
 import { Request, Response } from "express";
 import SuccessModel from '../model/SuccessModel'
 import ErrorModel from '../model/ErrorModel'
 import { UserBaseInfo } from '../entity/UserBaseInfo';
 import { UserDetailInfo } from '../entity/UserDetailInfo';
+import { ConnectionManager } from '../utils/ConnectionManager';
 
 class RegisterController {
 
@@ -24,7 +25,7 @@ class RegisterController {
         userInfo.password = req.body.password;
         userInfo.niceName = req.body.nice_name;
 
-        const userRegist = await getRepository(UserBaseInfo)
+        const userRegist = await ConnectionManager.getInstance().getRepository(UserBaseInfo)
             .createQueryBuilder("UserBaseInfo")
             .where("UserBaseInfo.user_name = :user_name", { user_name: req.body.user_name })
             .getOne();
@@ -63,7 +64,7 @@ class RegisterController {
                     }, (result) => {
 
                         //register userDetailInfo fail ,delete  UserBaseInfo 
-                        getRepository(UserBaseInfo)
+                        ConnectionManager.getInstance().getRepository(UserBaseInfo)
                             .createQueryBuilder("UserBaseInfo")
                             .where("UserBaseInfo.user_name = :user_name", { user_name: req.body.user_name })
                             .delete();

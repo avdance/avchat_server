@@ -1,9 +1,9 @@
-import { getRepository, getConnection } from "typeorm";
 import { Request, Response } from "express";
 import SuccessModel from '../model/SuccessModel'
 import ErrorModel from '../model/ErrorModel'
 import { UserDetailInfo } from '../entity/UserDetailInfo';
 import { BaseController } from './BaseController';
+import { ConnectionManager } from '../utils/ConnectionManager';
 
 class UserFriendsController {
 
@@ -18,7 +18,7 @@ class UserFriendsController {
         }
         BaseController.verify(req, res).then((uid) => {
 
-            getRepository(UserDetailInfo)
+            ConnectionManager.getInstance().getRepository(UserDetailInfo)
                 .createQueryBuilder("UserDetailInfo")
                 .where("UserDetailInfo.uid = :uid", { uid: req.body.ufid })
                 .getOne().then((userDetail: any) => {
@@ -29,7 +29,7 @@ class UserFriendsController {
                     (${parseInt(req.body.ufid, 0)}, "${userDetail.userName}", 
                     "${label}",${userDetail.gender},
                     ${userDetail.age},"${userDetail.headerImage}"); `;
-                    getConnection().manager.query(addUser).then((result) => {
+                    ConnectionManager.getInstance().manager.query(addUser).then((result) => {
 
                         if (result.affectedRows > 0) {
 
@@ -57,7 +57,7 @@ class UserFriendsController {
         BaseController.verify(req, res).then((uid) => {
 
             //do  get user friends
-            getConnection().manager.query(`select * from  avchat_user_friends_${uid}`).then((friends: any) => {
+            ConnectionManager.getInstance().manager.query(`select * from  avchat_user_friends_${uid}`).then((friends: any) => {
 
                 res.json(new SuccessModel(0, "获取成功", { data: friends }));
 
@@ -81,7 +81,7 @@ class UserFriendsController {
         BaseController.verify(req, res).then((uid) => {
 
             //do  get user friends
-            getConnection().manager
+            ConnectionManager.getInstance().manager
                 .query(`UPDATE avchat_user_friends_${uid} SET label='${req.body.label}' where  uid=${req.body.ufid}`)
                 .then((result) => {
 
@@ -112,7 +112,7 @@ class UserFriendsController {
         BaseController.verify(req, res).then((uid) => {
 
             //do  get user friends
-            getConnection().manager
+            ConnectionManager.getInstance().manager
                 .query(`delete from  avchat_user_friends_${uid} where uid=${req.body.ufid}`)
                 .then((result: any) => {
                     if (result.affectedRows > 0) {
