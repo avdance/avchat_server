@@ -6,6 +6,9 @@ var express = require('express');
 var cookieParser = require('cookie-parser');
 var bodyparser = require('body-parser')
 var https = require('https');
+var socketIo = require('socket.io')
+
+
 // 创建 session 中间件
 const sessionMiddleware = session({ 
     store:new FileStore(),//数据持久化方式，这里表示本地文件存储
@@ -26,6 +29,8 @@ exports.setupWithExpress = function setupWithExpress(app) {
     app.use(bodyparser.urlencoded({ extended: true }));
     //app.use(sessionMiddleware)
     var https_server = https.createServer(options, app);
+    let io = socketIo(https_server);
     //https_server.listen(3000, '0.0.0.0');
     app.listen(3000);
+    return io;
  }

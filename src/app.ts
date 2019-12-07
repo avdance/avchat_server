@@ -5,11 +5,14 @@ import routes from "./routes";
 import "reflect-metadata";
 import {createConnection} from "typeorm";
 import {setupWithExpress} from './middleware/SetupUtils'
+import SocketIO from 'socket.io';
+import {SocketHandler} from './socket/handler';
 
 createConnection().then(async connection => {
     let app: Express = express();
     //setup something with your express
-    setupWithExpress(app);
+    //return socket.io instance which bind https server
+    let io: SocketIO.Server = setupWithExpress(app);
     // 引入路由
     app.use(routes);
     // catch 404 and forward to error handler
@@ -27,4 +30,8 @@ createConnection().then(async connection => {
         res.json(err);
     });
 
+    io.on('connection', function(socket){
+        SocketHandler.handle(socket)
+    });
+    
 })
