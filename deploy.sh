@@ -14,7 +14,10 @@ function genORMConfig()
     	echo '	"password": "!2#4%6&8",' >> ormconfig.json
     	echo '	"database": "avchat",' >> ormconfig.json
     	echo '	"synchronize": true,' >> ormconfig.json
-    	echo '	"logging": false' >> ormconfig.json
+    	echo '	"logging": false,' >> ormconfig.json
+        echo '  "entities": [' >> ormconfig.json
+        echo '       "./entity/**/*.js"' >> ormconfig.json
+        echo '  ]' >> ormconfig.json
     	echo '}' >> ormconfig.json
 }
 
