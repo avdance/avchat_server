@@ -8,10 +8,10 @@ function genORMConfig()
 	touch ormconfig.json
 	echo '{' >> ormconfig.json
     	echo '	"type": "mysql",' >> ormconfig.json
-    	echo '	"host": "phab.avdance.top",' >> ormconfig.json
+    	echo '	"host": "localhost",' >> ormconfig.json
     	echo '	"port": 3306,' >> ormconfig.json
-    	echo '	"username": "mysqluser",' >> ormconfig.json
-    	echo '	"password": "1@3$5^7*",' >> ormconfig.json
+    	echo '	"username": "nodejs",' >> ormconfig.json
+    	echo '	"password": "!2#4%6&8",' >> ormconfig.json
     	echo '	"database": "avchat",' >> ormconfig.json
     	echo '	"synchronize": true,' >> ormconfig.json
     	echo '	"logging": false' >> ormconfig.json
