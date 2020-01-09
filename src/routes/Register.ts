@@ -12,7 +12,10 @@ router
     //test Api
     .get(RegisterController.allList)
     .post(RegisterController.regist) 
-
+    router
+.route('/verify')
+    //test Api
+    .post(RegisterController.verify) 
 /**
  * @route /register/:id
  * get:通过id 获取用户

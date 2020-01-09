@@ -52,8 +52,8 @@ avchat_server --
 8:	npm  install     -g typescript
 9:  npm  install     jsonwebtoken
 10: npm  install     @types/jsonwebtoken --save
-
-
+11: npm  i 			 @types/socket.io  --save 
+12: npm  i           svg-captcha --save
 *mysql导入*
 [login to mysql server]
 Mysql> create database avchat;

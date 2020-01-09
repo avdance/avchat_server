@@ -57,7 +57,8 @@ class UserFriendsController {
         BaseController.verify(req, res).then((uid) => {
 
             //do  get user friends
-            ConnectionManager.getInstance().manager.query(`select * from  avchat_user_friends_${uid}`).then((friends: any) => {
+            ConnectionManager.getInstance().manager.query(`select * from  avchat_user_friends_${uid}`)
+            .then((friends: any) => {
 
                 res.json(new SuccessModel(0, "获取成功", { data: friends }));
 

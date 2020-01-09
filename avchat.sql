@@ -85,7 +85,7 @@ CREATE TABLE `avchat_group_info` (
   `type` int(10) unsigned NOT NULL COMMENT '群组类型',
   `creator` int(10) unsigned NOT NULL COMMENT '创建者uid',
   `use_paswd` int(2) unsigned NOT NULL DEFAULT 0  COMMENT '是否有密码',
-  `passwd` varchar(20) unsigned  NULL  COMMENT  '群组密码',
+  `passwd` varchar(20)  NULL  COMMENT  '群组密码',
   `createtime` int(11) unsigned NOT NULL DEFAULT '0' COMMENT '创建时间',
   `expend1` varchar(20) DEFAULT NULL COMMENT '拓展字段1',
   `expend2` varchar(20) DEFAULT NULL COMMENT '拓展字段2',
